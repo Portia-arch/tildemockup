@@ -1,31 +1,97 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./index.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
-const VerticalNavbar = () => {
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:rgb(85, 85, 218);
+  color: #fff;
+  padding: 1rem;
+`;
+
+const NavItem = styled.li`
+  list-style: none;
+  margin: 0 1rem;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #bada55;
+    }
+  }
+`;
+
+const Logo = styled.h1`
+  font-size: 1.5rem;
+  margin: 0;
+`;
+
+const MobileNavToggle = styled.button`
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: rgb(85, 85, 218);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #bada55;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const DesktopNav = styled.ul`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+
+const MobileNav = styled.ul`
+  display: none;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: 767px) {
+    display: flex;
+  }
+`;
+
+const NavBar = () => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
+  <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light">
-      <ul className="navbar-nav d-flex flex-column">
-        <li className="nav-item">
-          <a className="nav-link" href="#">Dashboard</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">My Courses</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Messages</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Reports</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Settings</a>
-        </li>
-      </ul>
-    </nav>
+    <Nav>
+      <Logo>My Logo</Logo>
+      <MobileNavToggle onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}>
+        {isMobileNavOpen ? 'Close' : 'Menu'}
+      </MobileNavToggle>
+      <DesktopNav>
+        <NavItem></NavItem>
+        <NavItem><a href="/">About</a></NavItem>
+        
+      </DesktopNav>
+      <MobileNav style={{ display: isMobileNavOpen ? 'flex' : 'none' }}>
+        <NavItem><a href="/">Home</a></NavItem>
+        <NavItem><a href="/">About</a></NavItem>
+      </MobileNav>
+    </Nav>
   );
 };
-
-export default VerticalNavbar;
+export default NavBar;

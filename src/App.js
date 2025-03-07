@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+// import { Fragment } from 'react';
+import styled from 'styled-components';
+import NavBar from './components/Navbar/NavBar'
 
-function App() {
+const AppContainer = styled.div`
+  max-width: full;
+  margin: 0 auto;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          This is challanging
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <NavBar />
+      {/* Your app content goes here */}
+    </AppContainer>
   );
-}
+};
+
+// function App() {
+//   return (
+//     <Fragment>|
+//       <MenuAppBar />
+//       </Fragment>
+    
+//   );
+// }
 
 export default App;
